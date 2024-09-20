@@ -27,8 +27,10 @@ echo "-----------------------------------------------------------"
 [ -d "$(dirname "$CLOUDFLARE_CONFIG")" ] || mkdir -p "$(dirname "$CLOUDFLARE_CONFIG")"
 
 # Create Cloudflare configuration file
-echo "dns_cloudflare_api_token = $CLOUDFLARE_API_TOKEN" >"$CLOUDFLARE_CONFIG"
-chmod 600 "$CLOUDFLARE_CONFIG"
+if [ ! -f "$CLOUDFLARE_CONFIG" ]; then
+    echo "dns_cloudflare_api_token = $CLOUDFLARE_API_TOKEN" >"$CLOUDFLARE_CONFIG"
+    chmod 600 "$CLOUDFLARE_CONFIG"
+fi
 
 # Function to run certbot with provided arguments
 run_certbot() {
