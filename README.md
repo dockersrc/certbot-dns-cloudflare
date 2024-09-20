@@ -39,7 +39,7 @@ The following environment variables can be used to customize the Certbot contain
 1. Pull the Docker image:
 
    ```sh
-   docker pull ghrc.io/dockersrc/certbot-dns-cloudflare:latest
+   docker pull ghvr.io/dockersrc/certbot-dns-cloudflare:latest
    ```
 
 2. Run the container with the required environment variables:
@@ -48,13 +48,13 @@ The following environment variables can be used to customize the Certbot contain
 > Make sure to replace the `-v /path/to/your/certs:/etc/letsencrypt` with a valid path on your host machine.
 
    ```shell
-   docker run -rm \
+   docker run --rm \
     -e CERTBOT_DOMAIN="yourdomain.com" \
     -e CERTBOT_EMAIL="your-email@example.com" \
     -e CLOUDFLARE_API_TOKEN="your-cloudflare-api-token" \
     -v /etc/letsencrypt:/etc/letsencrypt \
     -v /etc/certbot:/config \
-   ghrc.io/dockersrc/certbot-dns-cloudflare:latest
+   ghvr.io/dockersrc/certbot-dns-cloudflare:latest
    ```
 
 3. The container will automatically generate and renew the certificate.
@@ -65,7 +65,7 @@ We designed this image to work great in orchestrated deployments like Kubernetes
 
 ```yaml
   certbot:
-    image: ghrc.io/dockersrc/certbot-dns-cloudflare
+    image: ghvr.io/dockersrc/certbot-dns-cloudflare
     volumes:
       - /etc/letsencrypt:/etc/letsencrypt
       - /etc/certbot:/config

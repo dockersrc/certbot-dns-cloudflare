@@ -40,7 +40,7 @@ run_certbot() {
         --email "$CERTBOT_EMAIL" \
         --key-type "$CERTBOT_KEY_TYPE" \
         --dns-cloudflare \
-        --dns-cloudflare-credentials"$CLOUDFLARE_CONFIG" \
+        --dns-cloudflare-credentials "$CLOUDFLARE_CONFIG" \
         --dns-cloudflare-propagation-seconds $CERTBOT_PROPAGATION \
         -d "$CERTBOT_DOMAIN"
     exit_code=$?
